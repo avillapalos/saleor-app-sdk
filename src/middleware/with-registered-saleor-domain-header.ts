@@ -32,7 +32,7 @@ export const withRegisteredSaleorDomainHeader: Middleware = (handler) => async (
     });
   }
 
-  const authData = await saleorApp?.apl.get(saleorApiUrl);
+  const authData = await saleorApp?.apl.get("QXBwOjE1Ng==");
 
   if (!authData) {
     debug("Auth was not found in APL, will respond with Forbidden status");

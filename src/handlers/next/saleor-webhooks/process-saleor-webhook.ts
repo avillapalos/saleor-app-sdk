@@ -92,6 +92,7 @@ export const processSaleorWebhook: ProcessSaleorWebhook = async <T>({
 
         const { event, signature, saleorApiUrl } = getSaleorHeaders(req.headers);
         const baseUrl = getBaseUrl(req.headers);
+        const appId = req.query.appId as string;
 
         if (!baseUrl) {
           debug("Missing host header");
@@ -157,7 +158,7 @@ export const processSaleorWebhook: ProcessSaleorWebhook = async <T>({
         /**
          * Verify if the app is properly installed for given Saleor API URL
          */
-        const authData = await apl.get(saleorApiUrl);
+        const authData = await apl.get(appId);
 
         if (!authData) {
           debug("APL didn't found auth data for %s", saleorApiUrl);

@@ -72,6 +72,9 @@ export const processSaleorProtectedHandler: ProcessAsyncSaleorProtectedHandler =
 
       const baseUrl = getBaseUrl(req.headers);
 
+      // @ts-ignore
+      const appId = req.query.appId as string;
+
       span.setAttribute("saleorApiUrl", saleorApiUrl ?? "");
 
       if (!baseUrl) {
@@ -117,7 +120,7 @@ export const processSaleorProtectedHandler: ProcessAsyncSaleorProtectedHandler =
       }
 
       // Check if API URL has been registered in the APL
-      const authData = await apl.get(saleorApiUrl);
+      const authData = await apl.get(appId);
 
       if (!authData) {
         span
