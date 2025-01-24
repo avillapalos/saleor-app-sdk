@@ -26,7 +26,7 @@ describe("createManifestHandler", () => {
           tokenTargetUrl: `${appBaseUrl}/api/register`,
           appUrl: appBaseUrl,
           permissions: [],
-          id: "app-id",
+          id: "mock-app-id",
           version: "1",
         };
       },
@@ -36,7 +36,7 @@ describe("createManifestHandler", () => {
 
     expect(res._getJSONData()).toEqual({
       appUrl: "https://some-saleor-host.cloud",
-      id: "app-id",
+      id: "mock-app-id",
       name: "Mock name",
       permissions: [],
       tokenTargetUrl: "https://some-saleor-host.cloud/api/register",

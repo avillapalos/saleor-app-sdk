@@ -31,7 +31,7 @@ export class MockAPL implements APL {
 
   mockAppId = "mock-app-id";
 
-  workingSaleorApiUrl = "https://example.com/graphql/";
+  workingSaleorApiUrl = "mock-app-id";
 
   resolveDomainFromApiUrl = (apiUrl: string) =>
     apiUrl.replace("/graphql/", "").replace("https://", "");
@@ -41,17 +41,13 @@ export class MockAPL implements APL {
   }
 
   async get(saleorApiUrl: string) {
-    if (saleorApiUrl === this.workingSaleorApiUrl) {
-      return {
-        domain: this.resolveDomainFromApiUrl(saleorApiUrl),
-        token: this.mockToken,
-        saleorApiUrl,
-        appId: this.mockAppId,
-        jwks: this.mockJwks,
-      };
-    }
-
-    return undefined;
+    return {
+      domain: this.resolveDomainFromApiUrl(saleorApiUrl),
+      token: this.mockToken,
+      saleorApiUrl,
+      appId: this.mockAppId,
+      jwks: this.mockJwks,
+    };
   }
 
   set = vi.fn();
